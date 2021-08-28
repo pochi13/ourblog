@@ -8,7 +8,7 @@
 | email              | string  | null: false, unique: true |
 | encrypted_password | string  | null: false 　            |
 | profile            | text    | null: false 　            |
-| profile_image_id   | integer | null: false 　            |
+| profile_image_id   | integer | 　                        |
 
 ### Association
 
@@ -17,11 +17,12 @@ has_many :comments
 
 ## blogs テーブル
 
-| Column  | Type       | Options 　       |
-| ------- | ---------- | ---------------- |
-| title   | string     | null: false 　   |
-| body    | string     | null: false      |
-| user_id | references | foreign_key:true |
+| Column   | Type       | Options 　       |
+| -------- | ---------- | ---------------- |
+| title    | string     | null: false 　   |
+| body     | string     | null: false      |
+| image_id | integer    |                  |
+| user_id  | references | foreign_key:true |
 
 ### Association
 
