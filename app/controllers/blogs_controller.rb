@@ -2,11 +2,13 @@ class BlogsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    @blogs = Blog.all
+    @blogs = Blog.order(id: "DESC")
   end
 
   def show
     @blog = Blog.find(params[:id])
+    @comment = Comment.new
+    @comments = @blog.comments.includes(:user)
   end
 
   def new
@@ -25,16 +27,17 @@ class BlogsController < ApplicationController
 
   def edit
     @blog = Blog.find(params[:id])
-    @blog.user !=  current_user
-      redirect_to blogs_path,alert: '不正なアクセスです'
-
+    if @blog.user !=  current_user
+      redirect_to blogs_path,alert: "不正なアクセスです"
+    end
   end
+
 
   def update
     @blog = Blog.find(params[:id])
-    if @blog.update(blog_params),notice: '投稿に成功しました'
-    redirect_to blog_path(@blog)
-  else
+    if @blog.update(blog_params)
+    redirect_to blog_path(@blog),notice: "投稿に成功しました"
+    else
     render :edit
     end
    end
@@ -46,6 +49,7 @@ class BlogsController < ApplicationController
   end
 
   private
+
   def blog_params
     params.require(:blog).permit(:title,:body,:image)
   end
