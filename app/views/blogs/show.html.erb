@@ -1,0 +1,17 @@
+<h1>Blogs#show</h1>
+<p>Find me in app/views/blogs/show.html.erb</p>
+
+<%= attachment_image_tag @blog, :image %>
+
+<%= @blog.title %>
+
+<%= simple_format @blog.body %>
+
+<% if @blog.user.id == current_user.id %>
+<%= link_to "編集", edit_blog_path(@blog),class: "button is-succes" %>
+<% end %>
+<%= @blog.user.username %>
+<%= @blog.user.profile %>
+<%= link_to user_path(@blog.user) do %>
+<% @blog.user.username %>さんのページへ
+<% end %>
