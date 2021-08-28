@@ -1,5 +1,12 @@
 class Blog < ApplicationRecord
   belongs_to :user
-
   attachment :image
-end
+
+  with_options presence: true do
+    validates :title
+    validates :body
+    validates :image
+
+  end
+
+end  
