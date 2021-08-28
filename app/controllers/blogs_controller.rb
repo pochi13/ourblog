@@ -1,4 +1,6 @@
 class BlogsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+
   def index
     @blogs = Blog.all
   end
@@ -14,19 +16,28 @@ class BlogsController < ApplicationController
   def create
     @blog = Blog.new(blog_params)
     @blog.user_id = current_user.id
-    @blog.save
-    redirect_to blog_path(@blog)
+    if @blog.save
+      redirect_to blog_path(@blog),notice: '投稿に成功しました'
+    else
+      render :new
+    end
   end
 
   def edit
     @blog = Blog.find(params[:id])
+    @blog.user !=  current_user
+      redirect_to blogs_path,alert: '不正なアクセスです'
+
   end
 
   def update
     @blog = Blog.find(params[:id])
-    @blog.update(blog_params)
+    if @blog.update(blog_params),notice: '投稿に成功しました'
     redirect_to blog_path(@blog)
-  end
+  else
+    render :edit
+    end
+   end
 
   def destroy
     blog = Blog.find(params[:id])
