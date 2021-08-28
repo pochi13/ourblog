@@ -7,7 +7,13 @@ class Blog < ApplicationRecord
     validates :title
     validates :body
     validates :image
-
   end
 
+    def self.search(search)
+      if search != ""
+        Blog.where('title LIKE(?)', "%#{search}%")
+      else
+        Blog.all
+      end
+    end
 end  

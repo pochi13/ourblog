@@ -48,6 +48,10 @@ class BlogsController < ApplicationController
     redirect_to user_path(blog.user), notice: "レシピを削除しました。"
   end
 
+  def search
+    @blogs = Blog.search(params[:keyword])
+  end
+
   private
 
   def blog_params
