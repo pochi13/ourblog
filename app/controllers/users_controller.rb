@@ -13,8 +13,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user !=  current_user
       redirect_to blogs_path,alert: '不正なアクセスです'
+    end
   end
-end
 
   def update
     @user = User.find(params[:id])
@@ -22,8 +22,8 @@ end
     redirect_to user_path(@user)
     else
       render :edit
+    end
   end
-end
 
   private
   def user_params

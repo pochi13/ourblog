@@ -4,6 +4,8 @@
   devise_for :users
   root to: "home#index"
   resources :users
-  resources :blogs
+  resources :blogs do
+    resources :comments, only: :create
+  end
 
 end
