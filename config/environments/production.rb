@@ -110,6 +110,4 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
   server '35.74.224.200', user: 'ec2-user', roles: %w{app db web}
-  
-
 end
