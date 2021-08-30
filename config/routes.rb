@@ -5,7 +5,7 @@
   root to: "home#index"
   resources :users
   resources :blogs do
-    resources :comments, only: [:create,:delete]
+    resources :comments, only: [:create,:destroy]
     collection do
       get 'search'
     end
