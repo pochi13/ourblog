@@ -9,8 +9,10 @@
 
 .column p {
   position: absolute;
-  top: 25%;
+  top: 50%;
+  margin-left: 20px;
   font-size: 60px;
   color: white;
   background-color: rgb(0, 80, 53);
+  justify-content: center;
 }

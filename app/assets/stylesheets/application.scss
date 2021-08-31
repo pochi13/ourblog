@@ -20,16 +20,12 @@
 }
 
 .main-image {
-  height: 940px;
-  background-image: url(book.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-.main-image {
-  background: url("/book.png");
+  height: 500px;
+  background: url("/books.jpeg");
   position: relative; /*相対配置*/
   width: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .card {
