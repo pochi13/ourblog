@@ -17,6 +17,7 @@
   </head>
 
   <body>
+  <div id="wrapper">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %> 
@@ -76,14 +77,15 @@
         <p class="alert"><%= alert %></p>
       </div>
     <% end %>
+
 <main class="container">
   <%= yield %>
+</main>
   <footer>
       <p>
         Copyright ourbooks 2021.
       </p>
     </footer>
-</main>
-
+</div>
   </body>
 </html>

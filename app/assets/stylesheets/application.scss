@@ -56,7 +56,14 @@
   background: url("/no-image.png");
 }
 
-.col-7 {
+.wrapper {
   display: flex;
-  width: auto;
+  flex-direction: column;
+  min-height: 100vh;
+}
+footer {
+  margin-top: 100px;
+  background-color: aquamarine;
+  margin-bottom: 0;
+  height: 50px;
 }
