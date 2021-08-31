@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-6">
+  <div class="col-6">
       <div class="card" >
         <%= attachment_image_tag @blog, :image %>
         <div class="card-body">
@@ -7,34 +7,33 @@
           <%= @blog.title %>
           <%= simple_format @blog.body %>
         </div>
-
-       <% if @blog.user.id == current_user.id %>
-<%= link_to "編集", edit_blog_path(@blog),class: "button is-succes" %>
-<% end %>
-<%= link_to @blog.user.username , user_path(@blog.user)  %><br>
-<%= @blog.user.profile %>
-
+        <% if @blog.user.id == current_user.id %>
+          <%= link_to "編集", edit_blog_path(@blog),class: "button is-succes" %>
+        <% end %>
+        <%= link_to @blog.user.username , user_path(@blog.user)  %><br>
+        <%= @blog.user.profile %>
 
 
 
-<% if current_user.already_favarited?(@blog) %>
-  <%= link_to  blog_favarites_path(@blog), method: :delete do %>
-    <i class="fas fa-heart"></i>
+
+  <% if current_user.already_favarited?(@blog) %>
+    <%= link_to  blog_favarites_path(@blog), method: :delete do %>
+      <i class="fas fa-heart"></i>
     <% end %>
-  <% else %>
-  <%= link_to  blog_favarites_path(@blog), method: :post do %>
-    <i class="far fa-heart"></i>
+      <% else %>
+    <%= link_to  blog_favarites_path(@blog), method: :post do %>
+      <i class="far fa-heart"></i>
     <% end %>
-  <%= @blog.favarites.count %>
+    <%= @blog.favarites.count %>
   <% end %>
 
-<div class="container">
+  <div class="container">
     <% if user_signed_in? %>
       <%= form_with(model: [@blog, @comment], local: true) do |form| %>
         <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
         <%= form.submit "SEND" %>
       <% end %>
-    <% else %>
+      <% else %>
       <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
     <% end %>
     <div class="comments">
@@ -46,8 +45,8 @@
         </p>
         <%= link_to "削除", blog_comment_path(@blog,comment), method: :delete ,class: 'btn btn-default'%>
       <% end %>
-    </div>
   </div>
+</div>
 
 
 
