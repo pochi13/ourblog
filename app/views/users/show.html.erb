@@ -1,28 +1,41 @@
-<%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", class: "profile_image is-rounded" %>
-<%= @user.username %>
-<% if @user.id == current_user.id %>
-<%= @user.email %>
-<%= link_to "編集", edit_user_path(@user), class: "button is-primary" %>
- <% end %>
-<%= @user.profile %>
+<div class="row">
+  <div class="col-6">
+    <div class="card" >
+        <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png" , class: "profile_image "%><br>
+        <%= @user.username %>
+        <div class="card-body">
+          <% if @user.id == current_user.id %> 
+          <h5 class="card-title">
+          <%= @user.email %><br>
+          <%= link_to "編集", edit_user_path(@user), class: "button is-primary" %>
+          <% end %><br>
+          <%= @user.profile %><br>
+    </div>
+  </div>
+</div>
 
-<% @user.blogs.each do |blog|%>
-<%= link_to blog_path(blog) do %>
-<%= attachment_image_tag blog, :image, fallback: "no-image.png" %>
-<% end %>
+<div class="row">
+  <% @user.blogs.each do |blog|%>
+    <div class="col-4">
+      <div class="card" >
+          <%= link_to blog_path(blog) do %>
+            <%= attachment_image_tag blog, :image, fallback: "no-image.png",class: "mini-image" ,class: "card-img-top" %>
+            <% end %><br>
+            <%= link_to blog_path(blog), class: "panel-block" do %>このブログを見る
+            <% end %><br>
+          <% if @user.id == current_user.id %>
+              <%= link_to edit_blog_path(blog), class: "panel-block" do %>このブログを編集する
+              <% end %><br>
+            <%= link_to blog_path(blog), method: :delete, data: {confirm: "削除しますか？"}, class: "panel-block" do %>このブログを削除する
+              <% end %><br>
+              <%= blog.updated_at.strftime("%Y-%m-%d %H:%M") %>更新
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
-<%= link_to blog_path(blog), class: "panel-block" do %>
-このブログを見る
-<% end %>
 
-<% if @user.id == current_user.id %>
-<%= link_to edit_blog_path(blog), class: "panel-block" do %>
-このブログを編集する
-<% end %>
 
-<%= link_to blog_path(blog), method: :delete, data: {confirm: "削除しますか？"}, class: "panel-block" do %>
-このブログを削除する
-<% end %>
-<% end %>
-<%= blog.updated_at.strftime("%Y-%m-%d %H:%M") %>更新
-<% end %>
+
+
