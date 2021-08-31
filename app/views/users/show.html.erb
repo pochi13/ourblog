@@ -8,7 +8,7 @@
 
 <% @user.blogs.each do |blog|%>
 <%= link_to blog_path(blog) do %>
-<%= attachment_image_tag blog, :image, fallback: "no-image.png" %>
+<%= attachment_image_tag blog, :image, fallback: "no-image.png",class: "mini-image" %>
 <% end %>
 
 <%= link_to blog_path(blog), class: "panel-block" do %>

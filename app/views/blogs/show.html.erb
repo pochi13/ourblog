@@ -1,17 +1,21 @@
-<%= attachment_image_tag @blog, :image %>
+<div class="row">
+    <div class="col-6">
+      <div class="card" >
+        <%= attachment_image_tag @blog, :image %>
+        <div class="card-body">
+          <h5 class="card-title">
+          <%= @blog.title %>
+          <%= simple_format @blog.body %>
+        </div>
 
-<%= @blog.title %>
-
-<%= simple_format @blog.body %>
-
-<% if @blog.user.id == current_user.id %>
+       <% if @blog.user.id == current_user.id %>
 <%= link_to "編集", edit_blog_path(@blog),class: "button is-succes" %>
 <% end %>
-<%= @blog.user.username %>
+<%= link_to @blog.user.username , user_path(@blog.user)  %><br>
 <%= @blog.user.profile %>
-<%= link_to user_path(@blog.user) do %>
-<% @blog.user.username %>さんのページへ<br>
-<% end %>
+
+
+
 
 <% if current_user.already_favarited?(@blog) %>
   <%= link_to  blog_favarites_path(@blog), method: :delete do %>
@@ -44,4 +48,6 @@
       <% end %>
     </div>
   </div>
+
+
 
