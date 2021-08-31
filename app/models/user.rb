@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :blogs, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :favarites, dependent: :destroy
 
 
   # Include default devise modules. Others available are:
@@ -10,4 +11,8 @@ class User < ApplicationRecord
          attachment :profile_image
 
     validates :username, presence: true    
-end
+
+    def already_favarited?(blog)
+      self.favarites.exists?(blog_id: blog.id)
+    end
+  end

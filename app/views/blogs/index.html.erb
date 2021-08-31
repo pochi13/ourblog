@@ -15,6 +15,17 @@
  <% end %>
  <%= link_to blog.user.username,user_path(blog.user.id) %><br>
  <%= blog.updated_at.strftime("%Y-%m-%d %H:%M") %>更新<br>
-<% end %>
+
+ <% if current_user.already_favarited?(blog) %>
+  <%= link_to  blog_favarites_path(blog), method: :delete do %>
+    <i class="fas fa-heart"></i>
+    <% end %>
+  <% else %>
+  <%= link_to  blog_favarites_path(blog), method: :post do %>
+    <i class="far fa-heart"></i>
+    <% end %>
+  <%= blog.favarites.count %>
+  <% end %>
+<% end %> 
 
 <div>

@@ -10,8 +10,19 @@
 <%= @blog.user.username %>
 <%= @blog.user.profile %>
 <%= link_to user_path(@blog.user) do %>
-<% @blog.user.username %>さんのページへ
+<% @blog.user.username %>さんのページへ<br>
 <% end %>
+
+<% if current_user.already_favarited?(@blog) %>
+  <%= link_to  blog_favarites_path(@blog), method: :delete do %>
+    <i class="fas fa-heart"></i>
+    <% end %>
+  <% else %>
+  <%= link_to  blog_favarites_path(@blog), method: :post do %>
+    <i class="far fa-heart"></i>
+    <% end %>
+  <%= @blog.favarites.count %>
+  <% end %>
 
 <div class="container">
     <% if user_signed_in? %>
