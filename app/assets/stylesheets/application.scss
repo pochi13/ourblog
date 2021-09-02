@@ -67,3 +67,17 @@ footer {
   margin-bottom: 0;
   height: 50px;
 }
+
+/* タブレット表示時 */
+@media (max-width: 1000px) {
+  p {
+    font-size: 25px;
+  }
+}
+
+/* スマホ表示時 */
+@media (max-width: 500px) {
+  p {
+    font-size: 20px;
+  }
+}
