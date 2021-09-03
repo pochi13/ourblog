@@ -64,6 +64,19 @@ belongs_to :user
 belongs_to :user
 belongs_to :blog
 
+## contacts テーブル
+
+| Column  | Type       | Options 　       |
+| ------- | ---------- | ---------------- |
+| name    | string     | null: false 　   |
+| user_id | references | foreign_key:true |
+| email   | string     | null: false      |
+| content | text       | null: false      |
+
+### Association
+
+belongs_to :user
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
