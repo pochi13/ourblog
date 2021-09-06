@@ -77,6 +77,18 @@ belongs_to :blog
 
 belongs_to :user
 
+## favorites テーブル
+
+| Column  | Type       | Options 　       |
+| ------- | ---------- | ---------------- |
+| name    | string     | null: false 　   |
+| user_id | references | foreign_key:true |
+
+### Association
+
+belongs_to :user
+belongs_to :blog
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
