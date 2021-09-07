@@ -1,16 +1,22 @@
 
 <%= form_with model: @user, local: true do |f| %>
-  <%= f.label :username %><br>
-  <%= f.text_field :username %> <br>
-
-  <%= f.label :email %><br>
-  <%= f.text_field :email %> <br>
-
-  <%= f.label :profile %><br>
-  <%= f.text_area :profile %> <br>
-
-  <%= f.label :profile_image %><br>
-  <%= f.attachment_field :profile_image %> <br>
-
+<div class="field">
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+  </div>
+  <div class="field">
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  </div>
+  <div class="field">
+  <%= f.label :profile %>
+  <%= f.text_area :profile %>
+  </div>
+  <div class="field">
+  <%= f.label :profile_image %>
+  <%= f.attachment_field :profile_image %>
+  </div>
+  <div class="action">
   <%= f.submit %>
+  </div>
 <% end %>
