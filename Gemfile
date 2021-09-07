@@ -72,4 +72,6 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem "bulma-rails"
 gem 'rails-i18n'
-gem "aws-sdk-s3", require: false
+# gem "aws-sdk-s3", require: false
+gem "refile-s3"
+gem 'dotenv-rails'
